@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="order"
+            type="com.example.recyclerviewrowclickeventwithdatabinding.model.Order" />
+        <variable
+            name="orderListener"
+            type="com.example.recyclerviewrowclickeventwithdatabinding.adapter.OrderClickListener" />
+
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="4"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/basketProductNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{order.productName}"
+                android:layout_margin="5dp"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/basketQuantityPlusImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_plus"
+                android:onClick="@{() ->  orderListener.onPlusItemClicked(order)}"
+                />
+
+            <TextView
+                android:id="@+id/basketQuantityTextView"
+                android:layout_width="50dp"
+                android:layout_height="53dp"
+                android:gravity="center"
+                android:text="@{String.valueOf(order.quantity)}"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                />
+            <ImageView
+                android:id="@+id/basketQuantityMinusImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:srcCompat="@drawable/ic_minus"
+                android:onClick="@{() ->  orderListener.onMinusItemClicked(order)}"
+                />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>
